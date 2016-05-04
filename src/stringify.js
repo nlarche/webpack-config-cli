@@ -1,4 +1,3 @@
-
 module.exports = function stringify(obj) {
 
     const arrOfKeyVals = []
@@ -28,39 +27,22 @@ module.exports = function stringify(obj) {
         const objKeys = Object.keys(obj);
         //set key output;
         objKeys.forEach(function(key) {
-            var keyOut = '\n' + key + ':';
+            var keyOut = '\n  ' + key + ':';
             var keyValOut = obj[key];
             //skip functions and undefined properties
             if (keyValOut instanceof Function || typeof keyValOut === undefined)
                 arrOfKeyVals.push('');
             else if (typeof keyValOut === 'string')
-                arrOfKeyVals.push(keyOut + '"' + keyValOut + '"');
+                arrOfKeyVals.push(keyOut + '"' + keyValOut + '"\n');
             else if (typeof keyValOut === 'boolean' || typeof keValOut === 'number' || keyValOut === null)
                 arrOfKeyVals.push(keyOut + keyValOut);
             //check for nested objects, call recursively until no more objects
             else if (keyValOut instanceof Object) {
+               
                 arrOfKeyVals.push(keyOut + stringify(keyValOut));
+                
             }
-        });
-        return `${depthOf(obj)}{' + ${arrOfKeyVals} + '}`;
+        });       
+        return `{${arrOfKeyVals}}`;
     }
 };
-
-function depthOf(object) {
-    var level = 1;
-    var key;
-    for(key in object) {
-        if (!object.hasOwnProperty(key)) continue;
-
-        if(typeof object[key] == 'object'){
-            var depth = depthOf(object[key]) + 1;
-            level = Math.max(depth, level);
-        }
-    }
-    var tabs = []
-    for(var i=0;i===level;i++){
-        tabs.push('\t\t');
-    }
-    
-    return tabs.join(null);
-}

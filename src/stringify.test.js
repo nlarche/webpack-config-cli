@@ -25,6 +25,13 @@ describe('stringify', () => {
             gg : [0,1,2,3,4,5,6]
         }
     }
-    console.log(stringify(test))
+    
+    var test1 = {
+        a : {
+             c : 'b'
+        },
+        e : 'e',
+    }
+    console.log(stringify(test1))
 })
 
