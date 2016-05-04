@@ -1,4 +1,5 @@
 import fs from 'fs'
+import util from 'util'
 import stringify from './stringify'
 
   var test = {
@@ -21,11 +22,14 @@ import stringify from './stringify'
                 null
             ],
             ff: 'ff',
-            gg : [0,1,2,3,4,5,6]
+            gg : [0,1,2,3,4,5,6],
+            q : function(){
+                return true
+            }
         }
     }
 
-fs.writeFile("webpack.config.js", `module.exports = ${stringify(test)}`, function(err) {
+fs.writeFile("webpack.config.js", `module.exports = ${util.inspect(test, {depth: null, colors: false})}`, function(err) {
     if(err) {
         return console.log(err);
     }
