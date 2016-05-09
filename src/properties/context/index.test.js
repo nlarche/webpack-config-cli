@@ -35,4 +35,8 @@ describe('context prompt', () => {
     it('should be an input type', () => {
         assert.strictEqual('__dirname', prompt.default)
     })
+    
+    it('should not return _diranme type', () => {
+       assert.strictEqual('', prompt.filter(prompt.default))
+    })
 })

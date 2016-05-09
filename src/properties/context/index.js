@@ -22,7 +22,8 @@ const prompt =
         type: 'input',
         name: 'context',
         message: 'What is the the base directory ?',
-        default: '__dirname'
+        default: '__dirname',
+        filter: (value) => prompt.default ? '': value
     }
 
 module.exports = {
