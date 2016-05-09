@@ -37,6 +37,6 @@ describe('context prompt', () => {
     })
     
     it('should not return _diranme type', () => {
-       assert.strictEqual('', prompt.filter(prompt.default))
+        assert.strictEqual('', prompt.filter(prompt.default))
     })
 })

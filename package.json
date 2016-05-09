@@ -4,7 +4,7 @@
   "description": "webpack configuration client ",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha src/**/*.test.js",
+    "test": "npm run lint && nyc mocha src/**/*.test.js",
     "watch:test": "npm run test -w",
     "lint": "eslint . --fix",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
